@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:nantangin/ui/dashboard.dart';
 
 class CreateAcc extends StatefulWidget {
   const CreateAcc({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _RegisterPageState createState() => _RegisterPageState();
 }
 
@@ -95,7 +98,10 @@ class _RegisterPageState extends State<CreateAcc> {
                           _currentStep++;
                         });
                       } else {
-                        _submitForm();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const DashboardPage()));
                       }
                     },
                     child: Text(
@@ -133,14 +139,17 @@ class _RegisterPageState extends State<CreateAcc> {
             ],
           ),
         ),
-        const TextField(
-          decoration: InputDecoration(
+        TextField(
+          decoration: const InputDecoration(
             prefixIcon: Icon(Icons.email_outlined),
-            hintText: "Nama pengguna atau alamat email",
+            hintText: "Alamat email",
             border: OutlineInputBorder(),
             filled: true,
             fillColor: Color(0xFFF5F5F5),
           ),
+          inputFormatters: [
+            FilteringTextInputFormatter.deny(RegExp(r'\s')),
+          ],
         ),
         const SizedBox(height: 15),
         const Padding(

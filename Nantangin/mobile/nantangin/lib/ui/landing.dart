@@ -1,6 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'register.dart';
-
+import 'signin.dart';
 
 class Landing extends StatelessWidget {
   const Landing({super.key});
@@ -26,7 +27,7 @@ class Landing extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 30), // Jarak dari tepi bawah
             child: Column(
               children: [
-                 GestureDetector(
+                GestureDetector(
                   child: SizedBox(
                     width:
                         MediaQuery.of(context).size.width * 0.9, // Lebar tombol
@@ -41,9 +42,9 @@ class Landing extends StatelessWidget {
                       ),
                       onPressed: () {
                         Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const CreateAcc())
-                  );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const CreateAcc()));
                       },
                       child: const Text(
                         "Buat akun",
@@ -57,27 +58,32 @@ class Landing extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10), // Jarak antara tombol
-                SizedBox(
-                  width:
-                      MediaQuery.of(context).size.width * 0.9, // Lebar tombol
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.shade200, // Warna tombol
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                GestureDetector(
+                  child: SizedBox(
+                    width:
+                        MediaQuery.of(context).size.width * 0.9, // Lebar tombol
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey.shade200, // Warna tombol
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 18), // Tinggi tombol
                       ),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 18), // Tinggi tombol
-                    ),
-                    onPressed: () {
-                      // Aksi untuk tombol Masuk
-                    },
-                    child: const Text(
-                      "Masuk",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginAcc()));
+                      },
+                      child: const Text(
+                        "Masuk",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
