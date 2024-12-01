@@ -1,7 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:nantangin/component/btm_navbar.dart';
+import 'package:nantangin/ui/details.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
+
+   @override
+  _DashboardPageState createState() => _DashboardPageState();
+}
+  class _DashboardPageState extends State<DashboardPage> {
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [
+    const DashboardPageContent(),
+    const Placeholder(), // Halaman untuk "Tambah"
+    const Placeholder(), // Halaman untuk "Cari"
+    const Placeholder(), // Halaman untuk "Notifikasi"
+    const Placeholder(), // Halaman untuk "Profil"
+  ];
+
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationWidget(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
+    );
+  }
+}
+
+class DashboardPageContent extends StatelessWidget {
+  const DashboardPageContent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +77,8 @@ class DashboardPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {},
-                    child: const Text("lihat semua", style: TextStyle(color: Color(0xFFF5633A))),
+                    child: const Text("lihat semua",
+                        style: TextStyle(color: Color(0xFFF5633A))),
                   ),
                 ],
               ),
@@ -53,6 +89,7 @@ class DashboardPage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: [
                     _buildPopularCard(
+                      context: context,
                       image: "images/pushup.jpg",
                       title: "Push Up 100 kali dalam sehari",
                       subtitle:
@@ -62,6 +99,7 @@ class DashboardPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     _buildPopularCard(
+                      context: context,
                       image: "images/pushup.jpg",
                       title: "Chin Up 100 kali dalam sehari",
                       subtitle:
@@ -71,6 +109,7 @@ class DashboardPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     _buildPopularCard(
+                      context: context,
                       image: "images/pushup.jpg",
                       title: "Pull Up 100 kali dalam sehari",
                       subtitle:
@@ -97,7 +136,8 @@ class DashboardPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {},
-                    child: const Text("lihat semua", style: TextStyle(color: Color(0xFFF5633A))),
+                    child: const Text("lihat semua",
+                        style: TextStyle(color: Color(0xFFF5633A))),
                   ),
                 ],
               ),
@@ -117,93 +157,82 @@ class DashboardPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        selectedItemColor: const Color(0xFFF5633A),
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: "Beranda",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group_add_outlined),
-            label: "Tambah",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search_outlined),
-            label: "Cari",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_outlined),
-            label: "Notifikasi",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: "Profil",
-          ),
-        ],
-      ),
     );
   }
 
   Widget _buildPopularCard({
+    required BuildContext context,
     required String image,
     required String title,
     required String subtitle,
     required String username,
     required int participants,
   }) {
-    return Container(
-      width: 300,
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 255, 218, 208),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                image,
-                height: 100,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              subtitle,
-              style: const TextStyle(color: Colors.black),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  username,
-                  style: const TextStyle(color: Colors.black),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ChallengeDetailPage(
+                image: "images/pushup.jpg",
+                title: "Push Up 100 kali dalam sehari",
+                subtitle: "Lu belum keren kalo belum push up 100 kali sehari!",
+                username: "Nanskuy",
+                participants: 13),
+          ),
+        );
+      },
+      child: Container(
+        width: 300,
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 255, 218, 208),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  image,
+                  height: 100,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
-                Row(
-                  children: [
-                    const Icon(Icons.person, size: 16),
-                    const SizedBox(width: 5),
-                    Text(participants.toString()),
-                  ],
+              ),
+              const SizedBox(height: 10),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(height: 5),
+              Text(
+                subtitle,
+                style: const TextStyle(color: Colors.black),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    username,
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                  Row(
+                    children: [
+                      const Icon(Icons.person, size: 16),
+                      const SizedBox(width: 5),
+                      Text(participants.toString()),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
