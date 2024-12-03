@@ -17,7 +17,7 @@ class Landing extends StatelessWidget {
                 0, MediaQuery.of(context).size.width * 0.75, 0, 0),
             child: Center(
               child: Image.asset(
-                "images/logo.png",
+                "assets/images/logo.png",
                 height: 225,
                 width: 225,
               ),

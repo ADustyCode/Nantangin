@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nantangin/ui/dashboard.dart';
+import 'package:NantangIn/ui/dashboard.dart';
 
 class CreateAcc extends StatefulWidget {
   const CreateAcc({super.key});

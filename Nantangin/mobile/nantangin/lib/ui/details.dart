@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nantangin/component/btm_navbar.dart';
-import 'package:nantangin/ui/create_chall.dart';
+import 'package:NantangIn/component/btm_navbar.dart';
+import 'package:NantangIn/ui/create_chall.dart';
 
 class ChallengeDetailPage extends StatefulWidget {
   final String image;
@@ -91,8 +91,8 @@ class DetailsPageContent extends StatelessWidget {
           icon: const Icon(Icons.menu),
           onPressed: () {},
         ),
-        title: Image.asset(
-          "images/logo.png",
+        title: const Image(image: AssetImage(
+          "assets/images/logo.png"),
           height: 225,
           width: 225,
           fit: BoxFit.fitWidth,
@@ -164,8 +164,8 @@ class DetailsPageContent extends StatelessWidget {
             // Challenge Image
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                image,
+              child: Image(image: AssetImage(
+                image),
                 height: 200,
                 width: double.infinity,
                 fit: BoxFit.cover,

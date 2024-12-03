@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nantangin/component/btm_navbar.dart';
-import 'package:nantangin/ui/create_chall.dart';
-import 'package:nantangin/ui/details.dart';
+import 'package:NantangIn/component/btm_navbar.dart';
+import 'package:NantangIn/ui/create_chall.dart';
+import 'package:NantangIn/ui/details.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -47,7 +47,7 @@ class DashboardPageContent extends StatelessWidget {
           icon: const Icon(Icons.menu),
           onPressed: () {},
         ),
-        title: Image.asset("images/logo.png",
+        title: Image.asset("assets/images/logo.png",
             height: 225, width: 225, fit: BoxFit.fitWidth),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -91,7 +91,7 @@ class DashboardPageContent extends StatelessWidget {
                   children: [
                     _buildPopularCard(
                       context: context,
-                      image: "images/pushup.jpg",
+                      image: "assets/images/pushup.jpg",
                       title: "Push Up 100 kali dalam sehari",
                       subtitle:
                           "Lu belum keren kalo belum push up 100 kali sehari!",
@@ -101,7 +101,7 @@ class DashboardPageContent extends StatelessWidget {
                     const SizedBox(width: 10),
                     _buildPopularCard(
                       context: context,
-                      image: "images/pushup.jpg",
+                      image: "assets/images/pushup.jpg",
                       title: "Chin Up 100 kali dalam sehari",
                       subtitle:
                           "Lu belum keren kalo belum chin up 100 kali sehari!",
@@ -111,7 +111,7 @@ class DashboardPageContent extends StatelessWidget {
                     const SizedBox(width: 10),
                     _buildPopularCard(
                       context: context,
-                      image: "images/pushup.jpg",
+                      image: "assets/images/pushup.jpg",
                       title: "Pull Up 100 kali dalam sehari",
                       subtitle:
                           "Lu belum keren kalo belum pull up 100 kali sehari!",
@@ -175,7 +175,7 @@ class DashboardPageContent extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => const ChallengeDetailPage(
-                image: "images/pushup.jpg",
+                image: "assets/images/pushup.jpg",
                 title: "Push Up 100 kali dalam sehari",
                 subtitle: "Lu belum keren kalo belum push up 100 kali sehari!",
                 username: "Nanskuy",
@@ -196,7 +196,7 @@ class DashboardPageContent extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.network(
+                child: Image.asset(
                   image,
                   height: 100,
                   width: double.infinity,
