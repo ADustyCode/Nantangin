@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nantangin/component/btm_navbar.dart';
+import 'package:nantangin/ui/create_chall.dart';
 
 class ChallengeDetailPage extends StatefulWidget {
   final String image;
@@ -39,8 +40,8 @@ class _ChallengeDetailPageState extends State<ChallengeDetailPage> {
     ));
     _pages.addAll([
       const Placeholder(), // Halaman untuk "Tambah"
+      const CreateChallengePage(), // Halaman untuk "Notifikasi"
       const Placeholder(), // Halaman untuk "Cari"
-      const Placeholder(), // Halaman untuk "Notifikasi"
       const Placeholder(), // Halaman untuk "Profil"
     ]);
   }
@@ -204,8 +205,8 @@ class DetailsPageContent extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Icon(Icons.favorite_border, color: Colors.grey),
                     SizedBox(width: 5),
                     Text(

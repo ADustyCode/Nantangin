@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class BottomNavigationWidget extends StatelessWidget {
   final int currentIndex;
-  final Function(int) onTap;
+  final ValueChanged<int> onTap;
 
   const BottomNavigationWidget({
     Key? key,
@@ -16,25 +16,35 @@ class BottomNavigationWidget extends StatelessWidget {
       currentIndex: currentIndex,
       selectedItemColor: const Color(0xFFF5633A),
       unselectedItemColor: Colors.grey,
-      onTap: onTap,
-      items: const [
-        BottomNavigationBarItem(
+      onTap: onTap, // Tidak ada error lagi
+      items: [
+        const BottomNavigationBarItem(
           icon: Icon(Icons.home_outlined),
           label: "Beranda",
         ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(Icons.group_add_outlined),
           label: "Tambah",
         ),
         BottomNavigationBarItem(
+          icon: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: const BoxDecoration(
+              color: Color(0xFFF5633A), // Warna tombol tengah
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+          ),
+          label: "Buat",
+        ),
+        const BottomNavigationBarItem(
           icon: Icon(Icons.search_outlined),
           label: "Cari",
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.notifications_outlined),
-          label: "Notifikasi",
-        ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(Icons.person_outline),
           label: "Profil",
         ),

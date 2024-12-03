@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nantangin/component/btm_navbar.dart';
+import 'package:nantangin/ui/create_chall.dart';
 import 'package:nantangin/ui/details.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -14,8 +15,8 @@ class DashboardPage extends StatefulWidget {
   final List<Widget> _pages = [
     const DashboardPageContent(),
     const Placeholder(), // Halaman untuk "Tambah"
+    const CreateChallengePage(), // Halaman untuk "Buat"
     const Placeholder(), // Halaman untuk "Cari"
-    const Placeholder(), // Halaman untuk "Notifikasi"
     const Placeholder(), // Halaman untuk "Profil"
   ];
 
